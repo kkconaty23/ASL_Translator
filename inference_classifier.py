@@ -11,6 +11,9 @@ MODEL_PATH = 'model_rf_336.p'   # or 'model.p'
 CAMERA_INDEX = 0
 WIN_NAME = 'ASL Inference'
 CONFIDENCE_BAR = True
+UNMIRROR_INPUT = False # If your webcam/driver already mirrors the image (selfie view) and you want to undo it, set UNMIRROR_INPUT=True.
+MIRROR_DISPLAY = False # Leave it False for a true, non-flipped camera view.
+
 
 # MANUAL LETTER MAPPING - Update this to match your folder organization
 # Map class indices to letters (adjust based on your training data order)
@@ -338,12 +341,19 @@ def main():
             if not ret:
                 print("[ERROR] Failed to read frame from camera")
                 break
-            
-            frame_count += 1
-            
-            # Process frame
+
+            # If your camera feed is already mirrored by the driver and you want to correct it,
+            # flip once here to "unmirror" the input for both display and inference.
+            if UNMIRROR_INPUT:
+                frame = cv2.flip(frame, 1)
+
+            # Use the ORIGINAL, non-mirrored frame for inference to keep handedness/coordinates correct.
             rgb = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
             results = hands.process(rgb)
+
+            # Choose what the user sees: mirrored or not.
+            disp_frame = cv2.flip(frame, 1) if MIRROR_DISPLAY else frame.copy()
+
             
             # Draw hand landmarks
             if results.multi_hand_landmarks:
