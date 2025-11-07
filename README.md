@@ -1,5 +1,9 @@
-# sign-language-detector-python
+# Group members please read:
+### the files you really need are:
+- asl_number_collector (numbers)
 
-Sign language detector with Python, OpenCV and Mediapipe !
+- image_collector (letters)
 
-[![Watch the video](https://img.youtube.com/vi/MJCSjXepaAM/0.jpg)](https://www.youtube.com/watch?v=MJCSjXepaAM)
+- asl_phrase_collector (phrases)
+
+- augment_flip_phrases
