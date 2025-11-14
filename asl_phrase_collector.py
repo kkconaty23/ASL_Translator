@@ -35,18 +35,19 @@ PHRASES = [
     # "SLEEP",
     # "DIAPER",
     # "BATH",
-    "MOM",
-    "DAD",
-    "PLEASE",
-    "THANK YOU",
+    # "MOM",
+    # "DAD",
+    # "PLEASE",
+    # "THANK YOU",
     # "HELP",
     # "LOVE YOU",
     # "SORRY",
     # "PLAY",
-    # "BOOK",
-    # "BALL",
-    # "DOG",
-    # "MUSIC"
+    "BOOK",
+    "BALL",
+    "DOG",
+    "MUSIC",
+    "HEY, KEEP IT PG!"
 ]
 
 # ===============================
